@@ -1,0 +1,4 @@
+*.swp
+src/*.swp
+src/*.o
+
