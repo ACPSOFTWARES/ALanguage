@@ -145,6 +145,27 @@ AST_T* parser_parse_variable_definition(parser_T* parser)
     return variable_definition;
 }
 
+AST_T* parser_parse_function_definition(parser_T* parser)
+{
+
+    AST_T* ast = init_ast(AST_FX_DEFINITION);
+
+    parser_eat(parser, TOKEN_ID);
+    char* function_name = parser->current_token->value;
+    parser_eat(parser, TOKEN_ID);
+    parser_eat(parser, TOKEN_LPARAN);
+    parser_eat(parser, TOKEN_RPARAN);
+
+    parser_eat(parser, TOKEN_LBRACE);
+    
+    ast->fx_def_body = parser_parse_statements(parser);
+
+    parser_eat(parser, TOKEN_RBRACE);
+
+    return ast;
+}
+
+
 AST_T* parser_parse_variable(parser_T* parser)
 {
     char* token_value = parser->current_token->value;
@@ -174,6 +195,10 @@ AST_T* parser_parse_id(parser_T* parser)
     if(strcmp(parser->current_token->value, "var") == 0)
     {
         return parser_parse_variable_definition(parser);
+    }
+    else if(strcmp(parser->current_token->value, "fx") == 0)
+    {
+        return parser_parse_function_definition(parser);
     }
     else
     {

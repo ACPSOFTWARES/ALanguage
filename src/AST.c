@@ -9,6 +9,9 @@ AST_T* init_ast(int type)
     ast->variable_definition_variable_name = (void*) 0;
     ast->variable_definition_value = (void*) 0;
 
+    /* AST_FX_DEFINITION */
+    ast->fx_def_body = (void*) 0;
+
     /* AST_VARIABLE */
     ast->variable_name = (void*) 0;
 

@@ -10,6 +10,7 @@ typedef struct AST_STRUCT
     
     enum {
         AST_VARIABLE_DEFINITION,
+        AST_FX_DEFINITION,
         AST_VARIABLE,
         AST_FUNCTION_CALL,
         AST_STRING,
@@ -20,6 +21,9 @@ typedef struct AST_STRUCT
     /* AST_VARIABLE_DEFINITION */
     char* variable_definition_variable_name;
     struct AST_STRUCT* variable_definition_value;
+
+    /* AST_FX_DEFINITION */
+    struct AST_STRUCT* fx_def_body;
 
     /* AST_VARIABLE */
     char* variable_name;
