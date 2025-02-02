@@ -4,7 +4,7 @@ objects = $(sources:.c=.o)
 flags = -g
 
 $(exec) : $(objects)
-	clang $(objects) $(flags) -o $(exec)
+	gcc $(objects) $(flags) -o $(exec)
 
 %.o: %.c include/%.h
 	gcc -c $(flags) $< -o $@
