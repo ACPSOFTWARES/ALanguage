@@ -24,6 +24,7 @@ typedef struct AST_STRUCT
 
     /* AST_FX_DEFINITION */
     struct AST_STRUCT* fx_def_body;
+    char* fx_def_name;
 
     /* AST_VARIABLE */
     char* variable_name;

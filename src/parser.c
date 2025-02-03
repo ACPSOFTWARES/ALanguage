@@ -151,7 +151,14 @@ AST_T* parser_parse_function_definition(parser_T* parser)
     AST_T* ast = init_ast(AST_FX_DEFINITION);
 
     parser_eat(parser, TOKEN_ID);
+
     char* function_name = parser->current_token->value;
+    ast->fx_def_name = calloc(
+            strlen(function_name) + 1, sizeof(char)
+    );
+
+    strcpy(ast->fx_def_name, function_name);
+
     parser_eat(parser, TOKEN_ID);
     parser_eat(parser, TOKEN_LPARAN);
     parser_eat(parser, TOKEN_RPARAN);

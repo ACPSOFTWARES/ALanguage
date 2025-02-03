@@ -95,7 +95,7 @@ AST_T* visitor_visit_variable_definition(visitor_T* visitor, AST_T* node)
 
 AST_T* visitor_visit_fx_def(visitor_T* visitor, AST_T* node)
 {
-    printf("Fx Defined\n");
+    printf("Fx Defined: %s\n", node->fx_def_name);
     return node;
 }
 

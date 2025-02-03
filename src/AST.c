@@ -11,6 +11,7 @@ AST_T* init_ast(int type)
 
     /* AST_FX_DEFINITION */
     ast->fx_def_body = (void*) 0;
+    ast->fx_def_name = (void*) 0;
 
     /* AST_VARIABLE */
     ast->variable_name = (void*) 0;
