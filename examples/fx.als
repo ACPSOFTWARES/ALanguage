@@ -1,6 +1,9 @@
 fx dosomething()
 {
-    print("hello");
+    print("It is Fx Calling");
+    print("It is Fx Calling");
+    print("It is Fx Calling");
+    print("It is Fx Calling");
 };
 
 dosomething();

@@ -10,4 +10,8 @@ typedef struct SCOPE_STRUCT
 
 scope_T* init_scope();
 
+AST_T* scope_add_fx_def(scope_T* scope, AST_T* fdef);
+
+AST_T* scope_get_fx_def(scope_T* scope, const char* fname);
+
 #endif

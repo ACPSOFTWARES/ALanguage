@@ -1,4 +1,5 @@
 #include "include/visitor.h"
+#include "include/scope.h"
 #include <stdio.h>
 #include<string.h>
 
@@ -95,7 +96,12 @@ AST_T* visitor_visit_variable_definition(visitor_T* visitor, AST_T* node)
 
 AST_T* visitor_visit_fx_def(visitor_T* visitor, AST_T* node)
 {
-    printf("Fx Defined: %s\n", node->fx_def_name);
+    
+    scope_add_fx_def(
+        node->scope,
+        node
+    );
+
     return node;
 }
 
@@ -129,6 +135,14 @@ AST_T* visitor_visit_function_call(visitor_T* visitor, AST_T* node)
     {
         return builtin_function_printsl(visitor, node->function_call_arguments, node->function_call_arguments_size);
     }
+
+    AST_T* fdef = scope_get_fx_def(
+        node->scope,
+        node->function_call_name
+    );
+
+    if(fdef != (void*)0)
+        return visitor_visit(visitor, fdef->fx_def_body);
 
     printf("Undefined method: `%s`\n", node->function_call_name);
     exit(1);

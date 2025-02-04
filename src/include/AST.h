@@ -18,6 +18,8 @@ typedef struct AST_STRUCT
         AST_NOOP // No Operation
     } type;
 
+    struct SCOPE_STRUCT* scope;
+
     /* AST_VARIABLE_DEFINITION */
     char* variable_definition_variable_name;
     struct AST_STRUCT* variable_definition_value;
